@@ -291,9 +291,13 @@ layui.define(['table'], function (exports) {
       }
     })
     // 返回顶层节点
-    return Object.values(nodes).filter(function (item) {
+    var values = [];
+    for (var key in nodes) {
+      values.push(nodes[key]);
+    }
+    return values.filter(function(item) {
       return rootPid ? item[pIdKey] === rootPid : !item[pIdKey];
-    })
+    });
   }
 
   Class.prototype.flatToTree = function (tableData) {
